@@ -19,7 +19,9 @@ build-aux/ltmain.sh
 build-aux/missing
 build-aux/test-driver
 build-aux/ylwrap
-config.*
+// config.*
+// !config.vapi
+// !config.vala
 aclocal.m4
 autom4te.cache
 ChangeLog
