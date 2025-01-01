@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk" version="4.0" />
+    <requires lib="Adw" version="1.0" />
+    <template class="SerialPlotterPreferences" parent="AdwPreferencesDialog">
+        <child>
+            <object class="AdwPreferencesPage" id="main_page">
+                <child>
+                    <object class="AdwPreferencesGroup" id="general_group">
+                        <property name="title">Time</property>
+                        <child>
+                            <object class="AdwSwitchRow" id="timestamp_row">
+                                <property name="title">Timestamp</property>
+                                <property name="subtitle">Show timestamp in buffer</property>
+                                <property name="active">false</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwEntryRow" id="timestamp_format_row">
+                                <property name="title">Timestamp Format</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwSwitchRow" id="milliseconds_row">
+                                <property name="title">Show Milliseconds</property>
+                                <property name="subtitle">Show milliseconds in buffer after timestamp</property>
+                                <property name="active">false</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </template>
+</interface>

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Seriot
+Exec=seriot
+Icon=com.ak1932.serial_plotter
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true

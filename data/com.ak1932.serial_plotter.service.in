@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.ak1932.serial_plotter
+Exec=@bindir@/seriot --gapplication-service

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk" version="4.0" />
+    <requires lib="Adw" version="1.0" />
+    <requires lib="livechart_static" version="1.0" />
+    <template class="SerialPlotterWindow" parent="AdwApplicationWindow">
+        <property name="title" translatable="yes">Seriot</property>
+        <style>
+            <class name="devel" />
+        </style>
+        <property name="default-width">800</property>
+        <property name="default-height">600</property>
+        <property name="resizable">true</property>
+        <property name="content">
+            <object class="AdwToolbarView">
+                <child type="top">
+                    <object class="AdwHeaderBar">
+                        <child type="start">
+                            <object class="GtkButton" id="refresh_ports_button">
+                                <property name="icon-name">view-refresh-symbolic</property>
+                                <property name="action-name">win.refresh_ports</property>
+                                <property name="tooltip-text">Refresh Port List</property>
+                            </object>
+                        </child>
+                        <child type="start">
+                            <object class="GtkDropDown" id="port_menu"></object>
+                        </child>
+
+                        <child type="start">
+                            <object class="GtkDropDown" id="baud_rate_menu"></object>
+                        </child>
+                        <child type="start">
+                            <object class="GtkButton" id="open_button">
+                                <property name="label">Open</property>
+                                <property name="action-name">win.open</property>
+                            </object>
+                        </child>
+
+                        <child type="end">
+                            <object class="GtkMenuButton">
+                                <property name="primary">True</property>
+                                <property name="icon-name">open-menu-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Main Menu</property>
+                                <property name="menu-model">primary_menu</property>
+                            </object>
+                        </child>
+
+                        <child type="end">
+                            <object class="GtkButton"
+                                id="global_clean_button">
+                                <property name="icon-name">weather-windy-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Clean Buffer</property>
+                            </object>
+                        </child>
+
+                        <child type="end">
+                            <object class="GtkButton"
+                                id="global_pause_button">
+                                <property name="icon-name">media-playback-pause-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Pause</property>
+                            </object>
+                        </child>
+
+                    </object>
+                </child>
+                <property name="content">
+                    <object class="AdwToastOverlay" id="toast_overlay">
+                        <property name="child">
+                            <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <property name="margin-top">6</property>
+                                <property name="margin-bottom">6</property>
+                                <property name="margin-start">6</property>
+                                <property name="margin-end">6</property>
+                                <child>
+                                    <object class="GtkStackSwitcher" id="stack_switcher">
+                                        <property name="stack">stack</property>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkStack" id="stack">
+                                        <child>
+                                            <object class="GtkStackPage">
+                                                <property name="name">buji</property>
+                                                <property name="title">Monitor</property>
+                                                <property name="child">
+
+                                                    <object class="GtkBox">
+                                                        <property
+                                                            name="orientation">vertical</property>
+                                                        <child type="top">
+                                                            <object class="GtkActionBar"
+                                                                id="monitor_bar">
+                                                                <child type="start">
+                                                                    <object class="GtkEntry"
+                                                                        id="input_bar">
+                                                                    <property name="hexpand">true</property>
+                                                                    <property name="placeholder-text">Send to device...</property>
+                                                                    <property name="can-focus">false</property>
+
+                                                                    <property name="secondary-icon-name">mail-reply-sender-symbolic-rtl</property>
+                                                                    <property name="secondary-icon-activatable">true</property>
+                                                                    </object>
+                                                                </child>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkScrolledWindow">
+                                                                <property name="hexpand">true</property>
+                                                                <property name="vexpand">true</property>
+                                                                <property name="child">
+
+                                                                    <object class="GtkTextView"
+                                                                        id="main_text_view">
+                                                                        <property name="vexpand">true</property>
+                                                                        <property name="monospace">true</property>
+                                                                        <property name="editable">false</property>
+                                                                        <property
+                                                                            name="cursor-visible">false</property>
+                                                                    </object>
+                                                                </property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkStackPage">
+                                                <property name="name">plotter</property>
+                                                <property name="title"
+                                                    translatable="yes">Plotter</property>
+                                                <property name="child">
+                                                    <object class="GtkBox" id="plot_box">
+                                                        <property
+                                                            name="orientation">vertical</property>
+                                                        <child type="end">
+                                                            <object class="GtkActionBar"
+                                                                id="plot_bar">
+                                                                <child type="start">
+                                                                    <object class="GtkButton"
+                                                                        id="seekbackward_plotter_button">
+                                                                        <property name="tooltip-text" translatable="yes">Move timeline forward</property>
+                                                                        <property name="icon-name">media-seek-forward-symbolic-rtl</property>
+                                                                    </object>
+                                                                </child>
+                                                                <child type="start">
+                                                                    <object class="GtkButton"
+                                                                        id="seekforward_plotter_button">
+                                                                        <property name="tooltip-text" translatable="yes">Move timeline backward</property>
+                                                                        <property name="icon-name">media-seek-forward-symbolic</property>
+                                                                    </object>
+                                                                </child>
+                                                                <child type="start">
+                                                                    <object class="GtkLabel">
+                                                                        <property
+                                                                            name="label">Plots:</property>
+                                                                    </object>
+                                                                </child>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </property>
+                    </object>
+                </property>
+            </object>
+        </property>
+    </template>
+    <menu id="primary_menu">
+        <section>
+            <item>
+                <attribute name="label" translatable="yes">_Preferences</attribute>
+                <attribute name="action">app.preferences</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+                <attribute name="action">win.show-help-overlay</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes">_About Serial-plotter</attribute>
+                <attribute name="action">app.about</attribute>
+            </item>
+        </section>
+    </menu>
+</interface>

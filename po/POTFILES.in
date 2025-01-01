@@ -1,0 +1,9 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/com.ak1932.serial_plotter.desktop.in
+data/com.ak1932.serial_plotter.metainfo.xml.in
+data/com.ak1932.serial_plotter.gschema.xml
+src/main.vala
+src/window.vala
+src/window.ui
+src/preferences.ui

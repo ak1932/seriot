@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="seriot">
+	<schema id="com.ak1932.serial_plotter" path="/com/ak1932/serial_plotter/">
+	</schema>
+</schemalist>
