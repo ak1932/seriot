@@ -5,9 +5,6 @@
     <requires lib="livechart_static" version="1.0" />
     <template class="SerialPlotterWindow" parent="AdwApplicationWindow">
         <property name="title" translatable="yes">Seriot</property>
-        <style>
-            <class name="devel" />
-        </style>
         <property name="default-width">800</property>
         <property name="default-height">600</property>
         <property name="resizable">true</property>

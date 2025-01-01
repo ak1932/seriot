@@ -4,6 +4,7 @@ A GNOME desktop serial monitor and serial plotter.
 
 ## Features:
     - Play/Pause
+    - Timestamps
     - Serial Plotter - plot incoming data
     - Enable/Disable plots
     - Rewind/Forward plots
